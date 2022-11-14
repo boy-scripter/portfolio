@@ -15,11 +15,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        @font-face {
-            font-family: myFirstFont;
-            src: url(Segoe.ttf);
-        }
 
         html,
         body {
@@ -289,15 +284,14 @@
             background-color: rgb(111, 29, 218);
         }
 
-        .logo {
-            position: relative;
-            z-index: 3;
-        }
-
         @media screen and (max-width:768px) {
 
             nav {
                 display: none;
+            }
+
+            .logo {
+                padding: 5px 0 0 0;
             }
 
             header>nav>ul {
@@ -323,7 +317,7 @@
                 width: 230px;
                 border: 2px solid white;
             }
-            
+
             header>nav>ul>li:hover {
                 transform: scale(1.10);
                 background-color: white;
