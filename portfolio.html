@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./utility.css">
+    <script src="https://kit.fontawesome.com/2faca9bc4c.js" crossorigin="anonymous"></script>
+    <!-- https://mourithemes.com/joseph/joseph/index.html#about -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* border: 1px solid black; */
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            --text-color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .only-for-background {
+            height: 100%;
+            width: 100%;
+            background-image: url('./1.jpg');
+            background-size: cover;
+            background-color: grey;
+            background-position: center center;
+            background-blend-mode: multiply;
+            display: table;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 15px 40px 10px 30px;
+            color: var(--text-color);
+            z-index: 2;
+        }
+
+        header>nav>ul {
+            list-style-type: none;
+            width: 620px;
+            justify-content: flex-end;
+        }
+
+        header>nav>ul>li {
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .intro {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .dynamic-text {
+            overflow: hidden;
+            height: 124px;
+            font-size: 65px;
+            list-style: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .dynamic-text>li {
+            display: block;
+            padding: 10px 0px;
+        }
+
+        .dynamic-text>li>span {
+            display: inline-block;
+            position: relative;
+            left: 0%;
+            --bottom-hide: 500px;
+            bottom: 0px;
+            animation: hide 8s steps(4) infinite;
+        }
+
+        .dynamic-text>li>span>span {
+            display: inline-block;
+            animation: typing 1s linear infinite alternate;
+            overflow: hidden;
+            border-right: 2px solid white;
+            width: 0%;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: rgb(0, 177, 177);
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 20px;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0px;
+            }
+
+            70%,
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes hide {
+            100% {
+                bottom: var(--bottom-hide);
+            }
+        }
+
+        .box {
+            flex: 0.2 1 550px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 80px 30px;
+        }
+
+        .skill-box {
+            flex-direction: column;
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-between;
+            height: 90%;
+        }
+
+        .skill-box>li {
+            width: 100%;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .skill-box>li::after {
+            content: "";
+            position: absolute;
+            top: 150%;
+            left: 0%;
+            border-radius: 10px;
+            width: var(--progress);
+            height: 40%;
+            background-color: dodgerblue;
+            z-index: 1;
+        }
+
+        .skill-box li::before {
+            content: "";
+            position: absolute;
+            border-radius: 10px;
+            top: 150%;
+            left: 0%;
+            width: 100%;
+            height: 40%;
+            background-color: black;
+        }
+
+        .download-cv {
+            border-radius: 0%;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .contact-head {
+            border-top: 2px solid dodgerblue;
+            border-bottom: 2px solid dodgerblue;
+            width: 110px;
+            margin: 0 auto;
+
+        }
+
+        #contact {
+            padding: 20px 0px;
+        }
+
+        .cards {
+            flex-wrap: wrap;
+            margin: 0 auto;
+            margin-top: 20px;
+            width: 95%;
+        }
+
+        .cards-box {
+            flex: 0.4 1 260px;
+            height: 160px;
+            padding: 20px;
+            margin: 20px;
+            transition: 0.4s;
+            box-shadow: 5px 15px 15px rgb(212, 215, 218), -5px 0px 5px rgb(212, 215, 218);
+        }
+
+        .cards-box>i {
+            color: deepskyblue;
+            margin-bottom: 10px;
+
+        }
+
+        .detail {
+            font-size: 18px;
+            margin-top: 12px;
+        }
+
+        .cards-box:hover {
+            transform: scale(1.07);
+        }
+
+        .detail i {
+            color: black;
+            font-size: 22px;
+            margin-inline: 5px;
+        }
+
+        .contact-form {
+            margin: 0 auto;
+            width: 90%;
+            padding: 50px 20px;
+            margin-top: 20px;
+            box-shadow: 5px 5px 10px rgb(165, 165, 165), -5px 0px 5px rgb(165, 165, 165);
+        }
+
+        .contact-textarea {
+            margin-top: 20px;
+            width: 100%;
+            padding: 30px 0px;
+        }
+
+        .contact-textarea textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .contact-input {
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .contact-input input {
+            font-size: 18px;
+            height: 25px;
+            border: none;
+            border-bottom: 2px solid gray;
+            outline: none;
+            flex: 1 1 250px;
+        }
+
+        .send-message {
+            color: white;
+            background-color: deepskyblue;
+            border: none;
+        }
+
+        .send-message:hover {
+            outline: 2px solid black;
+        }
+
+        .humburger {
+            display: none;
+            width: 50px;
+            padding: 5px;
+            font-size: 0;
+            /* reset default margins in inline block element*/
+            position: relative;
+            z-index: 3;
+
+        }
+
+        .humburger>span {
+            display: inline-block;
+            transform-origin: left center;
+            width: 100%;
+            height: 5px;
+            border-radius: 5px;
+            margin-top: 8px;
+            transition: transform 0.4s, opacity 0.4s;
+            background-color: white;
+        }
+
+        .logo {
+            position: relative;
+            z-index: 3;
+        }
+
+        @media screen and (max-width:768px) {
+
+            nav {
+                display: none;
+            }
+
+            header>nav>ul {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                z-index: 3;
+                background-color: rgb(1, 206, 161);
+                left: 0%;
+                top: 0%;
+                display: block;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            header>nav>ul>li {
+                padding: 10px 0;
+                border-radius: 5px;
+                text-align: center;
+                width: 230px;
+                border: 2px solid white;
+            }
+
+            header>nav>ul>li:hover {
+                background-color: white;
+                color: black;
+            }
+
+            .nav-active {
+                display: block;
+            }
+
+            .humburger {
+                display: block;
+            }
+
+            .welcome {
+                font-size: 25px;
+            }
+
+            .dynamic-text {
+                font-size: 45px;
+                padding: 0px;
+                height: 65px;
+                margin-bottom: 10px;
+            }
+
+            .dynamic-text>li {
+                padding: 0px;
+            }
+
+            .dynamic-text>li>span {
+                --bottom-hide: 294px;
+            }
+
+            #about .skill-box {
+                height: 400px;
+            }
+
+            #about .box {
+                flex-grow: 2;
+                padding: 30px 25px;
+            }
+
+            .contact-form {
+                width: 100%;
+            }
+
+            #about {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+            header {
+                padding-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="only-for-background">
+        <header class="flex justify-between">
+            <div class="logo font-900 text-30">
+                SHIVAM
+            </div>
+
+            <nav>
+                <ul class="flex font-900">
+                    <li>HOME</li>
+                    <li>ABOUT</li>
+                    <li>SERVICES</li>
+                    <li>PORTFOLIO</li>
+                    <li>CLIENT</li>
+                    <li>CONTACT</li>
+                </ul>
+            </nav>
+            <div class="humburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+        <section class="intro font-700">
+            <span class="text-30 welcome">WELCOME TO MY WEBSITE</span><br>
+            <ul class="dynamic-text">
+                <li><span><span style="white-space: nowrap;">SHIVAM GUPTA</span></li>
+                <li><span><span>DEVELOPER</span></span></li>
+                <li><span><span>FREELANCER</span></span></li>
+                <li><span><span style="white-space: nowrap;">HTML & CSS</span></span></li>
+            </ul>
+            <br>
+            <span class="btn">CONTACT ME</span>
+        </section>
+    </div>
+    <section class="about flex justify-evenly" id="about">
+        <div class="box text-right">
+            <span class="font-900 text-30">SHIVAM GUPTA</span>
+            <p style="line-height: 50px;" class="font-500">FULL STACK DEVELOPER</p>
+            <p style="line-height: 26px;" class="font-400"> I am a WordPress & Front-end Developer, working for the
+                last five years. I have experience working with local clients along with clients from all around the
+                world. I have vast knowledge in , css, Javascript , JQuery, Angular (javascript framewok), wordpress
+                theme development and
+                so on I am a WordPress & Front-end Developer, working for the last five years. I have experience working
+                with local clients along with clients from all around the world. I have vast
+                knowledge in , css, Javascript , JQuery, Angular (javascript framewok), wordpress theme development and
+                so on.
+
+            </p>
+            <a href="#" class="btn download-cv">DOWNLOAD CV</a>
+        </div>
+        <div class="box">
+            <ul class="justify-start skill-box">
+                <span class="font-600 text-30">My Skills</span>
+                <li style="--progress:95%" class="flex justify-between"><span>HTML</span><span>95%</span></li>
+                <li style="--progress:90%" class="flex justify-between"><span>CSS</span><span></span>90%</li>
+                <li style="--progress:85%" class="flex justify-between"><span>JAVASCRIPT</span><span>85%</span></li>
+                <li style="--progress:75%" class="flex justify-between"><span>WORDPRESS</span><span>75%</span></li>
+                <li style="--progress:70%" class="flex justify-between"><span>PHP</span><span>70%</span></li>
+            </ul>
+        </div>
+    </section>
+    <section id="contact">
+        <p class="font-700 text-30 contact-head">Contact</p>
+        <div class="cards flex items-center justify-center">
+            <div class="cards-box text-center text-30"><i class="fa-solid fa-house-chimney"></i>
+                <h6 class="font-600">LOCATION</h6>
+                <p class="font-400 detail">127.0.0.1 (localhost)</p>
+            </div>
+            <div class="cards-box text-center text-30"><i class="fa-solid fa-phone"></i>
+                <h6 class="font-600">PHONE</h6>
+                <p class="font-300 detail">(+91) 801016xxxx</p>
+            </div>
+            <div class="cards-box text-center text-30"><i class="fa-regular fa-envelope"></i>
+                <h6 class="font-600">EMAIL</h6>
+                <p class="font-300 detail">shivam.new2019@gmail.com</p>
+            </div>
+            <div class="cards-box text-center text-30"><i class="fa-solid fa-link"></i>
+                <h6 class="font-600">SOCIAL MEDIA</h6>
+                <p class="font-300 detail">
+                    <i class="fa-brands fa-facebook"></i>
+                    <a href="https://www.instagram.com/boy.scripter/"><i class="fa-brands fa-instagram"></i></a>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <a href="https://github.com/boy-scripter/"><i class="fa-brands fa-github"></i></a>
+                </p>
+            </div>
+        </div>
+        <div class="contact-form">
+            <div class="contact-input flex justify-between ">
+                <input type="text" name="fullname" required placeholder="Enter Your Full Name *">
+                <input type="email" name="useremail" required placeholder="Enter Your Email *">
+            </div>
+            <div class="contact-textarea text-center">
+                <textarea rows="12" cols="" class="" placeholder="Your Message*"></textarea>
+            </div>
+            <button class="btn send-message">Send Message</button>
+        </div>
+    </section>
+
+</body>
+<script>
+
+    // for Changing the navigation bar Color Start
+    let header = document.getElementsByTagName('header')[0];
+    let humburger = document.getElementsByClassName('humburger')[0];
+    window.onscroll = () => {
+        if (window.scrollY > 240) {
+            header.style.backgroundColor = "white"
+            header.children[0].style.color = "deepskyblue"
+            header.children[1].style.color = "black"
+            header.style.boxShadow = "0px 0.3px 15px black"
+            Array.from(humburger.children).forEach((param) => {
+                param.style.backgroundColor = "deepskyblue";
+            })
+            return true;
+        }
+        header.style.backgroundColor = "transparent";
+        header.children[0].style.color = "white"
+        header.children[1].style.color = "white"
+        Array.from(humburger.children).forEach((param) => {
+            param.style.removeProperty('background-color')
+        })
+        header.style.removeProperty("box-shadow")
+    }
+
+    // humburger Click
+    humburger.addEventListener('click', (event) => {
+        humburger.previousElementSibling.classList.toggle('nav-active');
+
+        if (humburger.children[1].style.opacity != '0') {
+            humburger.firstElementChild.style.transform = 'rotate(42deg)';
+            humburger.lastElementChild.style.transform = 'rotate(-42deg)';
+            humburger.children[1].style.opacity = '0';
+            Array.from(humburger.children).forEach((param) => {
+                param.style.removeProperty('background-color')
+            })
+            return true;
+        }
+        Array.from(humburger.children).forEach((param) => {
+            param.style.backgroundColor = "deepskyblue";
+        })
+        humburger.firstElementChild.style.transform = 'rotate(0deg)';
+        humburger.lastElementChild.style.transform = 'rotate(0deg)';
+        humburger.children[1].style.opacity = '1';
+
+    })
+
+</script>
+
+</html>
