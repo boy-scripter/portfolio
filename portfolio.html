@@ -14,7 +14,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* border: 1px solid black; */
         }
 
         html,
@@ -282,7 +281,7 @@
             border-radius: 5px;
             margin-top: 8px;
             transition: transform 0.4s, opacity 0.4s;
-            background-color: white;
+            background-color: rgb(111, 29, 218);
         }
 
         .logo {
@@ -299,6 +298,7 @@
             header>nav>ul {
                 position: absolute;
                 width: 100vw;
+                color: white;
                 height: 100vh;
                 z-index: 3;
                 background-color: rgb(1, 206, 161);
@@ -318,8 +318,9 @@
                 width: 230px;
                 border: 2px solid white;
             }
-
+            
             header>nav>ul>li:hover {
+                transform: scale(1.10);
                 background-color: white;
                 color: black;
             }
@@ -368,9 +369,11 @@
                 flex-wrap: wrap;
                 justify-content: flex-start;
             }
+
             header {
                 padding-right: 10px;
             }
+
         }
     </style>
 </head>
@@ -485,19 +488,13 @@
         if (window.scrollY > 240) {
             header.style.backgroundColor = "white"
             header.children[0].style.color = "deepskyblue"
-            header.children[1].style.color = "black"
+            header.children[1].style.color = "deepskyblue"
             header.style.boxShadow = "0px 0.3px 15px black"
-            Array.from(humburger.children).forEach((param) => {
-                param.style.backgroundColor = "deepskyblue";
-            })
             return true;
         }
         header.style.backgroundColor = "transparent";
         header.children[0].style.color = "white"
         header.children[1].style.color = "white"
-        Array.from(humburger.children).forEach((param) => {
-            param.style.removeProperty('background-color')
-        })
         header.style.removeProperty("box-shadow")
     }
 
@@ -509,14 +506,8 @@
             humburger.firstElementChild.style.transform = 'rotate(42deg)';
             humburger.lastElementChild.style.transform = 'rotate(-42deg)';
             humburger.children[1].style.opacity = '0';
-            Array.from(humburger.children).forEach((param) => {
-                param.style.removeProperty('background-color')
-            })
             return true;
         }
-        Array.from(humburger.children).forEach((param) => {
-            param.style.backgroundColor = "deepskyblue";
-        })
         humburger.firstElementChild.style.transform = 'rotate(0deg)';
         humburger.lastElementChild.style.transform = 'rotate(0deg)';
         humburger.children[1].style.opacity = '1';
