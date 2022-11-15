@@ -23,7 +23,7 @@
             --text-color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         @font-face {
             font-family: "Segoe UI";
             src: url('./Segoe.ttf');
@@ -56,7 +56,7 @@
             justify-content: flex-end;
         }
 
-        header>nav>ul>li {
+        header>nav>ul>a>li {
             padding: 10px 15px;
             cursor: pointer;
             margin-top: 5px;
@@ -198,14 +198,64 @@
             height: 160px;
             padding: 20px;
             margin: 20px;
-            transition: 0.4s;
+            transition: 0.5s;
             box-shadow: 5px 15px 15px rgb(212, 215, 218), -5px 0px 5px rgb(212, 215, 218);
         }
 
         .cards-box>i {
             color: deepskyblue;
             margin-bottom: 10px;
+            transition: all 1s;
+        }
 
+        .cards-box:hover {
+            transform: scale(1.07);
+        }
+
+        .cards-box:nth-child(2)>i {
+            transform-origin: 60% 50%;
+        }
+
+        .cards-box:nth-child(2):hover>i,
+        .cards-box:nth-child(3):hover>i,
+        .cards-box:nth-child(1):hover>i {
+            animation: isecond 1s linear reverse;
+        }
+
+        .cards-box>p i {
+            transition: 1s;
+
+        }
+
+        .cards-box:hover>p i {
+            font-size: 25px;
+            padding-inline: 8px;
+            transform: rotate(30deg);
+        }
+
+        @keyframes isecond {
+
+            0%,
+            100% {
+                transform: rotate(0);
+            }
+
+            20%,
+            40%,
+            60% {
+                transform: rotate(18deg);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: rotate(-18deg);
+            }
+        }
+
+        .cards-box:nth-child(4):hover>i {
+            transition: 2s;
+            transform: rotate(720deg);
         }
 
         .detail {
@@ -213,15 +263,12 @@
             margin-top: 12px;
         }
 
-        .cards-box:hover {
-            transform: scale(1.07);
-        }
-
         .detail i {
             color: black;
             font-size: 22px;
             margin-inline: 5px;
         }
+
 
         .contact-form {
             margin: 0 auto;
@@ -257,6 +304,10 @@
             flex: 1 1 250px;
         }
 
+        .contact-input input:focus {
+            border-color: dodgerblue;
+        }
+
         .send-message {
             color: white;
             background-color: deepskyblue;
@@ -288,6 +339,13 @@
             transition: transform 0.4s, opacity 0.4s;
             background-color: rgb(111, 29, 218);
         }
+         
+        /*overwrite Color of the navbar because color is already define in utlity.css */
+        nav>ul>a {
+            color: inherit;
+        }
+
+
 
         @media screen and (max-width:768px) {
 
@@ -315,7 +373,7 @@
                 gap: 10px;
             }
 
-            header>nav>ul>li {
+            header>nav>ul>a>li {
                 padding: 10px 0;
                 border-radius: 5px;
                 text-align: center;
@@ -323,7 +381,7 @@
                 border: 2px solid white;
             }
 
-            header>nav>ul>li:hover {
+            header>nav>ul>a>li:hover {
                 transform: scale(1.10);
                 background-color: white;
                 color: black;
@@ -361,7 +419,7 @@
             }
 
             #about .box {
-                flex-grow: 2;
+                flex-grow: 1;
                 padding: 30px 25px;
             }
 
@@ -392,12 +450,24 @@
 
             <nav>
                 <ul class="flex font-900">
-                    <li>HOME</li>
-                    <li>ABOUT</li>
-                    <li>SERVICES</li>
-                    <li>PORTFOLIO</li>
-                    <li>CLIENT</li>
-                    <li>CONTACT</li>
+                    <a href="">
+                        <li>HOME</li>
+                    </a>
+                    <a href="#about">
+                        <li>ABOUT</li>
+                    </a>
+                    <a href="">
+                        <li>SERVICES</li>
+                    </a>
+                    <a href="">
+                        <li>PORTFOLIO</li>
+                    </a>
+                    <a href="">
+                        <li>CLIENT</li>
+                    </a>
+                    <a href="#contact">
+                        <li>CONTACT</li>
+                    </a>
                 </ul>
             </nav>
             <div class="humburger">
@@ -421,14 +491,12 @@
     <section class="about flex justify-evenly" id="about">
         <div class="box text-right">
             <span class="font-900 text-30">SHIVAM GUPTA</span>
-            <p style="line-height: 50px;" class="font-500">FULL STACK DEVELOPER</p>
-            <p style="line-height: 26px;" class="font-400"> I am a WordPress & Front-end Developer, working for the
-                last five years. I have experience working with local clients along with clients from all around the
-                world. I have vast knowledge in , css, Javascript , JQuery, Angular (javascript framewok), wordpress
-                theme development and
-                so on I am a WordPress & Front-end Developer, working for the last five years. I have experience working
-                with local clients along with clients from all around the world. I have vast
-                knowledge in , css, Javascript , JQuery, Angular (javascript framewok), wordpress theme development and
+            <p style="line-height: 50px;" class="font-500">FRONT END DEVELOPER</p>
+            <p style="line-height: 26px;" class="font-400"> I am a fresher and I really want to get the experience of
+                working. I can put my full hard work and show my skills properly. I can give new innovative ideas via my
+                skills and creative mind. If I get the chance to do an internship with your company, then I will share
+                my innovative ideas with my seniors. I have vast knowledge in , css,
+                Javascript , JQuery, Reactjs (javascript framewok), wordpress theme development and
                 so on.
 
             </p>
@@ -438,29 +506,34 @@
             <ul class="justify-start skill-box">
                 <span class="font-600 text-30">My Skills</span>
                 <li style="--progress:95%" class="flex justify-between"><span>HTML</span><span>95%</span></li>
-                <li style="--progress:90%" class="flex justify-between"><span>CSS</span><span></span>90%</li>
-                <li style="--progress:85%" class="flex justify-between"><span>JAVASCRIPT</span><span>85%</span></li>
-                <li style="--progress:75%" class="flex justify-between"><span>WORDPRESS</span><span>75%</span></li>
-                <li style="--progress:70%" class="flex justify-between"><span>PHP</span><span>70%</span></li>
+                <li style="--progress:80%" class="flex justify-between"><span>CSS</span><span></span>80%</li>
+                <li style="--progress:75%" class="flex justify-between"><span>JAVASCRIPT</span><span>75%</span></li>
+                <li style="--progress:65%" class="flex justify-between"><span>Reactjs</span><span>65%</span></li>
+                <li style="--progress:77%" class="flex justify-between"><span>PHP</span><span>77%</span></li>
+                <li style="--progress:80%" class="flex justify-between"><span>MYSQL</span><span>87%</span></li>
             </ul>
         </div>
     </section>
     <section id="contact">
         <p class="font-700 text-30 contact-head">Contact</p>
         <div class="cards flex items-center justify-center">
-            <div class="cards-box text-center text-30"><i class="fa-solid fa-house-chimney"></i>
+            <div class="cards-box text-center text-30">
+                <i class="fa-solid fa-house-chimney"></i>
                 <h6 class="font-600">LOCATION</h6>
-                <p class="font-400 detail">127.0.0.1 (localhost)</p>
+                <p class="font-400 detail">ASHOK NAGAR , NEW DELHI</p>
             </div>
-            <div class="cards-box text-center text-30"><i class="fa-solid fa-phone"></i>
+            <div class="cards-box text-center text-30">
+                <i class="fa-solid fa-phone"></i>
                 <h6 class="font-600">PHONE</h6>
-                <p class="font-300 detail">(+91) 801016xxxx</p>
+                <p class="font-300 detail">(+91) 8010164488</p>
             </div>
-            <div class="cards-box text-center text-30"><i class="fa-regular fa-envelope"></i>
+            <div class="cards-box text-center text-30">
+                <i class="fa-regular fa-envelope"></i>
                 <h6 class="font-600">EMAIL</h6>
                 <p class="font-300 detail">shivam.new2019@gmail.com</p>
             </div>
-            <div class="cards-box text-center text-30"><i class="fa-solid fa-link"></i>
+            <div class="cards-box text-center text-30">
+                <i class="fa-solid fa-link"></i>
                 <h6 class="font-600">SOCIAL MEDIA</h6>
                 <p class="font-300 detail">
                     <i class="fa-brands fa-facebook"></i>
