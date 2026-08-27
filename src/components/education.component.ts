@@ -44,9 +44,9 @@ gsap.registerPlugin(ScrollTrigger);
                   </div>
                 </div>
 
-                <!-- Arrow between cards - reversed direction, centered in gap -->
+                <!-- Arrow between cards - reversed direction, centered in gap (moved off card) -->
                 @if (i < educations.length - 1) {
-                  <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-10 w-8 h-8 bg-white border-2 border-primary-200 rounded-full items-center justify-center text-primary-600 shadow-md animate-[pulse_2s_ease-in-out_infinite]" #eduArrow>
+                  <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-8 z-10 w-8 h-8 bg-white border-2 border-primary-200 rounded-full items-center justify-center text-primary-600 shadow-md animate-[pulse_2s_ease-in-out_infinite]" #eduArrow>
                     <i class="fa-solid fa-arrow-left text-xs"></i>
                   </div>
                   <!-- Mobile vertical arrow - reversed -->
