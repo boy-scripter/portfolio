@@ -1,66 +1,7 @@
-export interface Profile {
-  name: string;
-  role: string;
-  tagline: string;
-  email: string;
-  phone: string;
-  location: string;
-  resumeUrl: string;
-  socials: SocialLink[];
-}
+import { Profile, Education, SkillCategory, Experience, Project, ContactInfo } from './types';
+import educationData from './education.json';
 
-export interface SocialLink {
-  label: string;
-  url: string;
-  icon: string;
-}
-
-export interface AboutInfo {
-  heading: string;
-  label: string;
-  paragraphs: string[];
-  highlights: { label: string; value: string }[];
-}
-
-export interface SkillCategory {
-  name: string;
-  icon: string;
-  skills: Skill[];
-}
-
-export interface Skill {
-  name: string;
-  icon: string;
-  color: string;
-}
-
-export interface Experience {
-  id: string;
-  role: string;
-  company: string;
-  period: string;
-  location: string;
-  description: string;
-  achievements: string[];
-  tags: string[];
-}
-
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  liveUrl: string;
-  repoUrl: string;
-  featured: boolean;
-}
-
-export interface ContactInfo {
-  heading: string;
-  label: string;
-  subtitle: string;
-}
+export type { Profile, Education, SkillCategory, Experience, Project, ContactInfo } from './types';
 
 export const profile: Profile = {
   name: 'Shivam Gupta',
@@ -76,37 +17,7 @@ export const profile: Profile = {
   ],
 };
 
-export interface Education {
-  id: string;
-  degree: string;
-  institution: string;
-  period: string;
-  location: string;
-}
-
-export const educations: Education[] = [
-  {
-    id: 'edu-1',
-    degree: 'Bachelor of Computer Application (BCA)',
-    institution: 'IGNOU',
-    period: '2021 — 2024',
-    location: 'Delhi, India',
-  },
-  {
-    id: 'edu-2',
-    degree: 'Senior Secondary (XII) — Commerce with Maths',
-    institution: 'CBSE Board',
-    period: '2019 — 2021',
-    location: 'India',
-  },
-  {
-    id: 'edu-3',
-    degree: 'Secondary (X)',
-    institution: 'CBSE Board',
-    period: '2018 — 2019',
-    location: 'India',
-  },
-];
+export const educations: Education[] = educationData as Education[];
 
 export const skillCategories: SkillCategory[] = [
   {
@@ -264,3 +175,14 @@ export const contactInfo: ContactInfo = {
   label: 'Contact',
   subtitle: "I'm currently available for freelance work and full-time opportunities. Drop me a line and let's chat.",
 };
+
+export const codeSnippet = `const developer = {
+  name: '${profile.name}',
+  role: '${profile.role}',
+  location: '${profile.location}',
+  skills: ['Angular', 'React', 'TS'],
+  passion: 'Building great UX',
+  available: ${profile.resumeUrl !== '#'},
+};
+
+developer.build(); // 🚀`;

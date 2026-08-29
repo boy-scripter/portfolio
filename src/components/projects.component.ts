@@ -1,7 +1,7 @@
-import { Component, AfterViewInit, ElementRef, QueryList, ViewChildren, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, viewChildren, viewChild } from '@angular/core';
 import scrollama from 'scrollama';
 import { RevealDirective } from '../directives/reveal.directive';
-import { projects } from '../data/portfolio.data';
+import { projects } from '../data/data';
 
 @Component({
   selector: 'app-projects',
@@ -9,15 +9,15 @@ import { projects } from '../data/portfolio.data';
   imports: [RevealDirective],
   template: `
     <section id="projects" class="py-32 bg-white">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="section-container">
         <div class="reveal mb-16" appReveal>
-          <span class="inline-block font-mono text-sm font-medium text-primary-600 tracking-wider uppercase mb-3">// Projects</span>
-          <h2 class="text-4xl lg:text-6xl font-bold font-display text-slate-900">Featured Work</h2>
-          <p class="text-lg text-slate-500 max-w-xl mt-4">A selection of projects I'm proud of. Scroll through to see each one come to life.</p>
+          <span class="section-label">// Projects</span>
+          <h2 class="section-heading">Featured Work</h2>
+          <p class="section-description">A selection of projects I'm proud of. Scroll through to see each one come to life.</p>
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-16" #scroller id="scroller">
+      <div class="section-container flex flex-col gap-16" #scroller id="scroller">
         @for (project of projects; track project.id; let i = $index) {
           <div class="project-step opacity-15 scale-95 transition-all duration-700" [attr.data-step]="i" #projectStep>
             <div class="group grid md:grid-cols-2 gap-0 bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all"
@@ -43,15 +43,15 @@ import { projects } from '../data/portfolio.data';
                 <p class="text-slate-600 leading-relaxed mb-5">{{ project.description }}</p>
                 <div class="flex flex-wrap gap-2 mb-6">
                   @for (tag of project.tags; track tag) {
-                    <span class="text-xs font-medium px-3 py-1 bg-slate-100 text-slate-600 rounded-full border border-slate-200">{{ tag }}</span>
+                    <span class="tag">{{ tag }}</span>
                   }
                 </div>
                 <div class="flex gap-3">
-                  <a [href]="project.liveUrl" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 bg-primary-600 text-white rounded-xl font-semibold text-sm hover:bg-primary-700 hover:-translate-y-0.5 transition-all">
+                  <a [href]="project.liveUrl" target="_blank" rel="noopener" class="btn-primary">
                     Live Demo
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </a>
-                  <a [href]="project.repoUrl" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 border-2 border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:border-primary-400 hover:text-primary-600 transition-all">
+                  <a [href]="project.repoUrl" target="_blank" rel="noopener" class="btn-secondary">
                     Source
                   </a>
                 </div>
@@ -72,11 +72,11 @@ import { projects } from '../data/portfolio.data';
 export class ProjectsComponent implements AfterViewInit {
   projects = projects;
 
-  @ViewChildren('projectStep') steps!: QueryList<ElementRef>;
-  @ViewChild('scroller') scroller!: ElementRef;
+  steps = viewChildren<ElementRef>('projectStep');
+  scroller = viewChild<ElementRef>('scroller');
 
   ngAfterViewInit(): void {
-    const stepElements = this.steps.toArray().map((s) => s.nativeElement as HTMLElement);
+    const stepElements = this.steps().map((s) => s.nativeElement as HTMLElement);
 
     const scroller = scrollama();
     scroller

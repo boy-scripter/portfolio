@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { RevealDirective } from '../directives/reveal.directive';
-import { skillCategories } from '../data/portfolio.data';
+import { skillCategories } from '../data/data';
 
 @Component({
   selector: 'app-skills',
@@ -9,19 +9,19 @@ import { skillCategories } from '../data/portfolio.data';
   imports: [RevealDirective, NgClass],
   template: `
     <section id="skills" class="py-32 bg-white">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="section-container">
         <div class="reveal mb-16" appReveal>
-          <span class="inline-block font-mono text-sm font-medium text-primary-600 tracking-wider uppercase mb-3">// Skills</span>
-          <h2 class="text-4xl lg:text-6xl font-bold font-display text-slate-900">Technologies I Work With</h2>
-          <p class="text-lg text-slate-500 max-w-xl mt-4">A curated toolkit honed over years of building production-grade web applications.</p>
+          <span class="section-label">// Skills</span>
+          <h2 class="section-heading">Technologies I Work With</h2>
+          <p class="section-description">A curated toolkit honed over years of building production-grade web applications.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
           @for (cat of skillCategories; track cat.name; let i = $index) {
-            <div class="reveal p-8 bg-white rounded-2xl border border-slate-200 hover:border-primary-300 hover:shadow-xl hover:-translate-y-1 transition-all"
+            <div class="reveal p-8 interactive-card"
                  appReveal [revealDelay]="i * 100">
               <div class="flex items-center gap-3 mb-6">
-                <span class="w-11 h-11 flex items-center justify-center bg-primary-50 rounded-xl text-primary-600 text-lg">
+                <span class="icon-box">
                   <i [ngClass]="getCategoryIconClass(cat.icon)"></i>
                 </span>
                 <h3 class="text-xl font-semibold font-display text-slate-900">{{ cat.name }}</h3>

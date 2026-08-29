@@ -1,12 +1,12 @@
-import { Directive, ElementRef, OnInit, OnDestroy, Input, AfterViewInit } from '@angular/core';
+import { Directive, ElementRef, OnInit, OnDestroy, input, AfterViewInit } from '@angular/core';
 
 @Directive({
   selector: '[appReveal]',
   standalone: true,
 })
 export class RevealDirective implements OnInit, AfterViewInit, OnDestroy {
-  @Input() appReveal: 'single' | 'stagger' | '' = 'single';
-  @Input() revealDelay = 0;
+  appReveal = input<'single' | 'stagger' | ''>('single');
+  revealDelay = input(0);
 
   private observer: IntersectionObserver | null = null;
 
@@ -14,7 +14,7 @@ export class RevealDirective implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     const el = this.el.nativeElement;
-    if (this.appReveal === 'stagger') {
+    if (this.appReveal() === 'stagger') {
       el.classList.add('reveal-stagger');
     } else {
       el.classList.add('reveal');
@@ -24,8 +24,8 @@ export class RevealDirective implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const el = this.el.nativeElement;
 
-    if (this.revealDelay > 0) {
-      el.style.transitionDelay = `${this.revealDelay}ms`;
+    if (this.revealDelay() > 0) {
+      el.style.transitionDelay = `${this.revealDelay()}ms`;
     }
 
     this.observer = new IntersectionObserver(

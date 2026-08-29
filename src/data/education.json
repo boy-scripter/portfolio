@@ -1,0 +1,26 @@
+[
+  {
+    "id": "edu-1",
+    "degree": "Bachelor of Computer Application (BCA)",
+    "institution": "IGNOU",
+    "period": "2021 — 2024",
+    "location": "Delhi, India",
+    "icon": "fa-solid fa-graduation-cap"
+  },
+  {
+    "id": "edu-2",
+    "degree": "Senior Secondary (XII) — Commerce with Maths",
+    "institution": "CBSE Board",
+    "period": "2019 — 2021",
+    "location": "India",
+    "icon": "fa-solid fa-school"
+  },
+  {
+    "id": "edu-3",
+    "degree": "Secondary (X)",
+    "institution": "CBSE Board",
+    "period": "2018 — 2019",
+    "location": "India",
+    "icon": "fa-solid fa-school"
+  }
+]
